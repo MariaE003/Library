@@ -37,7 +37,22 @@ class LivreController extends Controller
             'Livres'=>$Livres,
         ]);
     }
+    public function showOne($id){
+        $livre=Livre::findOrFail($id);
+        // if (!$livre) {
+        //     return response()->json([
+        //     'message'=>'votre Livres est introuvable',
+        // ]);
+        // }
+        $livre->consultations++;
+        $livre->save();
+        return response()->json([
+            'message'=>'les Livres disponible sont :',
+            'Livres'=>$livre,
+        ]);
+    }
     
+
 
 }
 
