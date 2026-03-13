@@ -51,8 +51,13 @@ class LivreController extends Controller
             'Livres'=>$livre,
         ]);
     }
+    public function delete(Request $request){
+        $Livre=Livre::where('id',$request->id)->delete();
+        return response()->json([
+            'message'=>'la Livre supprimer avec succes',
+        ]);
+    }
+
     
-
-
 }
 
