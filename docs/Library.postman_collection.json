@@ -1,0 +1,909 @@
+{
+  "info": {
+    "_postman_id": "5103598b-61d6-4d46-931c-00c484e5c0f3",
+    "name": "Library",
+    "description": "API pour la gestion de la bibliothèque Library. Permet de gérer les utilisateurs, catégories, livres, consulter les statistiques et suivre l’état de la collection.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "31780322"
+  },
+  "item": [
+    {
+      "name": "Category",
+      "item": [
+        {
+          "name": "ajouter categorie",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "drama",
+                  "type": "text",
+                  "uuid": "1991124a-a261-4e57-a3f0-d06c17cd8118"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/categories",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "show categorie",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/categories",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "categories"
+              ]
+            },
+            "description": "Récupère toutes les catégories disponibles."
+          },
+          "response": []
+        },
+        {
+          "name": "delete categorie",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/categories/2",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "categories",
+                "2"
+              ]
+            },
+            "description": "Supprime une catégorie par son ID."
+          },
+          "response": []
+        },
+        {
+          "name": "update categorie",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/categories/1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "categories",
+                "1"
+              ]
+            },
+            "description": "Met à jour une catégorie par son ID."
+          },
+          "response": []
+        }
+      ],
+      "description": "Routes pour créer, afficher, modifier et supprimer des catégories de livres."
+    },
+    {
+      "name": "livre",
+      "item": [
+        {
+          "name": "ajouter livre",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "titre",
+                  "value": "antigone",
+                  "type": "text",
+                  "uuid": "b0ab110d-0adc-4896-91be-f20c9098db54"
+                },
+                {
+                  "key": "auteur",
+                  "value": "vector Hego",
+                  "type": "text",
+                  "uuid": "a9ca85f0-c7a5-4c6a-b9a7-ec54877b9501"
+                },
+                {
+                  "key": "quantite",
+                  "value": "100",
+                  "type": "text",
+                  "uuid": "bcad2af3-6a60-41ad-8414-faf9ebc245de"
+                },
+                {
+                  "key": "nbr_degrade",
+                  "value": "20",
+                  "type": "text",
+                  "uuid": "b35d6c83-2321-4082-9e76-45120dc31027"
+                },
+                {
+                  "key": "categorie_id",
+                  "value": "2",
+                  "type": "text",
+                  "uuid": "062b8c11-36fa-4c68-b040-28630cef1271"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/livre",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "livre"
+              ]
+            },
+            "description": "Ajoute un nouveau livre à la bibliothèque."
+          },
+          "response": []
+        },
+        {
+          "name": "livre show",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/livre/show",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "livre",
+                "show"
+              ]
+            },
+            "description": "Récupère tous les livres disponibles."
+          },
+          "response": []
+        },
+        {
+          "name": "delete livre",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/livre/3/delete",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "livre",
+                "3",
+                "delete"
+              ]
+            },
+            "description": "Supprime un livre par son ID."
+          },
+          "response": []
+        },
+        {
+          "name": "update livre",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "titre",
+                  "value": "antigone v1",
+                  "type": "text",
+                  "uuid": "b0ab110d-0adc-4896-91be-f20c9098db54"
+                },
+                {
+                  "key": "auteur",
+                  "value": "ahmed sefrioui",
+                  "type": "text",
+                  "uuid": "a9ca85f0-c7a5-4c6a-b9a7-ec54877b9501"
+                },
+                {
+                  "key": "quantite",
+                  "value": "3",
+                  "type": "text",
+                  "uuid": "bcad2af3-6a60-41ad-8414-faf9ebc245de"
+                },
+                {
+                  "key": "nbr_degrade",
+                  "value": "1",
+                  "type": "text",
+                  "uuid": "b35d6c83-2321-4082-9e76-45120dc31027"
+                },
+                {
+                  "key": "categorie_id",
+                  "value": "1",
+                  "type": "text",
+                  "uuid": "062b8c11-36fa-4c68-b040-28630cef1271"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/livre/2",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "livre",
+                "2"
+              ]
+            },
+            "description": "Met à jour les informations d’un livre"
+          },
+          "response": []
+        },
+        {
+          "name": "search livre",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/livre/search?titre=an&categorie_id=1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "livre",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "titre",
+                  "value": "an"
+                },
+                {
+                  "key": "categorie_id",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Recherche un livre par titre et/ou catégorie."
+          },
+          "response": []
+        },
+        {
+          "name": "Livres Par Categorie",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/livre/LivresParCategorie?categorie_id=1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "livre",
+                "LivresParCategorie"
+              ],
+              "query": [
+                {
+                  "key": "categorie_id",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Récupère tous les livres d’une catégorie spécifique."
+          },
+          "response": []
+        },
+        {
+          "name": "show One livre",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/livre/showOne/2",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "livre",
+                "showOne",
+                "2"
+              ]
+            },
+            "description": "Récupère les détails d’un livre par son ID."
+          },
+          "response": []
+        },
+        {
+          "name": "livre populaire",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/livre/populaire",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "livre",
+                "populaire"
+              ]
+            },
+            "description": "Récupère les livres les plus consultés."
+          },
+          "response": []
+        },
+        {
+          "name": "livre Degrade",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/livre/livreDegrade",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "livre",
+                "livreDegrade"
+              ]
+            },
+            "description": "Récupère les livres ayant un nombre de dégradés supérieur à 0."
+          },
+          "response": []
+        },
+        {
+          "name": "livre statistique",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/livre/statistique",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "livre",
+                "statistique"
+              ]
+            },
+            "description": "Affiche les statistiques globales de la collection : livres les plus consultés, état global et nombre totale des livres et des categorie."
+          },
+          "response": []
+        }
+      ],
+      "description": "Routes pour gérer les livres : ajout, modification, suppression, recherche et statistiques."
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "login library",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer 9|N57OFuPoO8A9KCG3fZFgVw6jvtdlXLYIWoz1Fn9X1b41588f",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "rouma17@gmail.com",
+                  "type": "text",
+                  "uuid": "1991124a-a261-4e57-a3f0-d06c17cd8118"
+                },
+                {
+                  "key": "password",
+                  "value": "rouma",
+                  "type": "text",
+                  "uuid": "dceb0ca9-ade4-44ab-978b-ed6cb6accd3e"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/login",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "login"
+              ]
+            },
+            "description": "Authentifie un utilisateur et renvoie un token Bearer pour les routes protégées."
+          },
+          "response": []
+        },
+        {
+          "name": "register Library",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "maria",
+                  "type": "text",
+                  "uuid": "1991124a-a261-4e57-a3f0-d06c17cd8118"
+                },
+                {
+                  "key": "role",
+                  "value": "lecteur",
+                  "type": "text",
+                  "uuid": "3ccbbc9f-e245-4c96-8125-bc8a4adf20ca"
+                },
+                {
+                  "key": "email",
+                  "value": "maria@gmail.com",
+                  "type": "text",
+                  "uuid": "dceb0ca9-ade4-44ab-978b-ed6cb6accd3e"
+                },
+                {
+                  "key": "password",
+                  "value": "rouma",
+                  "type": "text",
+                  "uuid": "80a8b526-772f-4fe3-bc4c-267b3986d930"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/register",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "register"
+              ]
+            },
+            "description": "l'inscription d'un nouvel utilisateur"
+          },
+          "response": []
+        },
+        {
+          "name": "logout",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer 9|N57OFuPoO8A9KCG3fZFgVw6jvtdlXLYIWoz1Fn9X1b41588f",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/logout",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "logout"
+              ]
+            },
+            "description": "Déconnecte l’utilisateur et invalide le token."
+          },
+          "response": []
+        }
+      ],
+      "description": "Routes pour gérer l’authentification : inscription, login et logout."
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": ""
+    }
+  ]
+}
