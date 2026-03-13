@@ -37,5 +37,14 @@ class CategorieController extends Controller
         ]);
     }
 
+    public function update(Request $request){
+        $categorie=Category::where('id',$request->id)->update([
+            'name'=>$request->name,
+        ]);
+        return response()->json([
+            'message'=>'categorie modifier avec succes',
+            'categorie'=>$categorie,
+        ]);
+    }
     
 }
