@@ -23,5 +23,12 @@ class CategorieController extends Controller
         ],201);
 
     }
+    public function index(){
+        $categories=Category::all();
+        return response()->json([
+            'message'=>'les categories disponible sont :',
+            'categories'=>$categories,
+        ]);
+    }
     
 }
