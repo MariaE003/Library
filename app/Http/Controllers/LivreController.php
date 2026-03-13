@@ -86,6 +86,30 @@ class LivreController extends Controller
             'Livre'=>$Livre,
         ]);
     }
+    public function LivresParCategorie(Request $request){
+        $livres=Livre::where('categorie_id',$request->categorie_id)->get();
+        return response()->json([
+            'message'=>'Livres :',
+            'Livre'=>$livres,
+        ]);
+    }
+
+    public function LivrePlusConsulter(){
+        $livres=Livre::orderBy('consultations','desc')->limit(2)->get();
+        return response()->json([
+            'message'=>'les livres les plus consulter sont :',
+            'livre'=>$livres
+        ]);
+    }
+
+    public function livreDegrade(){
+        $livre=Livre::where('nbr_degrade','>',0)->get();
+        return response()->json([
+            'message'=>'les livres qui ont degrader sont :',
+            'livre'=>$livre
+        ]);
+    }
+
     
 
 }
