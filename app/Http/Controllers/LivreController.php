@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Livre;
-use App\Models\Categorie;
+use App\Models\Category;
 class LivreController extends Controller
 {
     public function save(Request $request){
@@ -58,14 +58,16 @@ class LivreController extends Controller
         ]);
     }
 
-    public function update(Request $request){
-        $Livre=Livre::where('id',$request->id)->update([
-            'titre'=>$request->titre,
-            'auteur'=>$request->auteur,
-            'quantite'=>$request->quantite,
-            'nbr_degrade'=>$request->nbr_degrade,
-            'categorie_id'=>$request->categorie_id,
-        ]);
+    public function update(Request $request,$id){
+        $Livre=Livre::find($id);
+
+        $Livre->titre=$request->titre;
+        $Livre->auteur=$request->auteur;
+        $Livre->quantite=$request->quantite;
+        $Livre->nbr_degrade=$request->nbr_degrade;
+        $Livre->categorie_id=$request->categorie_id;
+        $Livre->save();
+
         return response()->json([
             'message'=>'Livre modifier avec succes',
             'Livre'=>$Livre,
@@ -112,7 +114,7 @@ class LivreController extends Controller
 
     public function statistique(){
         $nbr_livre=Livre::count();
-        $nbr_cat=Categorie::count();
+        $nbr_cat=Category::count();
         $livre_Degrader=Livre::sum('nbr_degrade');
         return response()->json([
             'message'=>'les livres qui ont degrader sont :',

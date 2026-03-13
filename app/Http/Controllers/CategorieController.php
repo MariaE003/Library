@@ -16,7 +16,6 @@ class CategorieController extends Controller
         $categorie=Category::create([
             'name'=>$request->name,
         ]);
-
         return response()->json([
             'message'=>'categorie ajouter avec succes',
             'categorie'=>$categorie,
@@ -30,17 +29,21 @@ class CategorieController extends Controller
             'categories'=>$categories,
         ]);
     }
-    public function destroy(Request $request){
-        $categorie=Category::where('id',$request->id)->delete();
+    public function destroy($id){
+        $categorie=Category::find($id)->delete();
         return response()->json([
             'message'=>'la categorie supprimer avce succec',
         ]);
     }
 
-    public function update(Request $request){
-        $categorie=Category::where('id',$request->id)->update([
-            'name'=>$request->name,
-        ]);
+    public function update(Request $request,$id){
+        // $categorie=Category::where('id',$id)->update([
+        //     'name'=>$request->name,
+        // ]);
+        $categorie=Category::find($id);
+
+        $categorie->name = $request->name;
+        $categorie->save();
         return response()->json([
             'message'=>'categorie modifier avec succes',
             'categorie'=>$categorie,

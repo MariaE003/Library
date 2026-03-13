@@ -12,11 +12,13 @@ class AuthController extends Controller
     public function register(Request $request){
         $request->validate([
             'name'=>'required',
+            'role'=>'required',
             'email'=>'required',
             'password'=>'required',
         ]);
         $user=User::create([
             'name' => $request->name,
+            'role' => $request->role,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
@@ -40,8 +42,8 @@ class AuthController extends Controller
             'token'=>$token
         ]);
     }
-
-    public function logout(){
+    
+    public function logout(Request $request){
         $request->user()->currentAccessToken()->delete();
         return response()->json([
             'message'=>'logout success'
