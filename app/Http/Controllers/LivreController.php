@@ -110,7 +110,18 @@ class LivreController extends Controller
         ]);
     }
 
-    
+    public function statistique(){
+        $nbr_livre=Livre::count();
+        $nbr_cat=Categorie::count();
+        $livre_Degrader=Livre::sum('nbr_degrade');
+        return response()->json([
+            'message'=>'les livres qui ont degrader sont :',
+            'nbr_livres'=>$nbr_livre,
+            'nbr_cat'=>$nbr_cat,
+            'livre_Degrader'=>$livre_Degrader,
+        ]);
+    }
+
 
 }
 
