@@ -46,5 +46,9 @@ class CategorieController extends Controller
             'categorie'=>$categorie,
         ]);
     }
-    
+    public function show(Category $category) {
+        return response()->json([
+            'categorie'=> $category,
+        ]);
+    }
 }
