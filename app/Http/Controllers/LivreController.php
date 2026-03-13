@@ -58,6 +58,22 @@ class LivreController extends Controller
         ]);
     }
 
+    public function update(Request $request){
+        $Livre=Livre::where('id',$request->id)->update([
+            'titre'=>$request->titre,
+            'auteur'=>$request->auteur,
+            'quantite'=>$request->quantite,
+            'nbr_degrade'=>$request->nbr_degrade,
+            'categorie_id'=>$request->categorie_id,
+        ]);
+        return response()->json([
+            'message'=>'Livre modifier avec succes',
+            'Livre'=>$Livre,
+        ]);
+    }
+
     
+
+
 }
 
