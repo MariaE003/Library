@@ -30,6 +30,14 @@ class LivreController extends Controller
 
     }
     
+    public function show(){
+        $Livres=Livre::all();
+        return response()->json([
+            'message'=>'les Livres disponible sont :',
+            'Livres'=>$Livres,
+        ]);
+    }
+    
 
 }
 
