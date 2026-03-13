@@ -30,5 +30,12 @@ class CategorieController extends Controller
             'categories'=>$categories,
         ]);
     }
+    public function destroy(Request $request){
+        $categorie=Category::where('id',$request->id)->delete();
+        return response()->json([
+            'message'=>'la categorie supprimer avce succec',
+        ]);
+    }
+
     
 }
