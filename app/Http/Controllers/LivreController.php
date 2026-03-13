@@ -72,8 +72,21 @@ class LivreController extends Controller
         ]);
     }
 
-    
+    public function search(Request $request){
+        if($request->titre){
+            $query=Livre::where('titre','like','%'.$request->titre.'%');
+        }
 
+        if($request->categorie_id){
+            $query=Livre::where('categorie_id',$request->categorie_id);
+        }
+        $Livre=$query->get();
+        return response()->json([
+            'message'=>'Livres :',
+            'Livre'=>$Livre,
+        ]);
+    }
+    
 
 }
 
